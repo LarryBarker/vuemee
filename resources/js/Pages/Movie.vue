@@ -20,7 +20,7 @@
                                 <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-teal-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                <span v-text="$page.props.movie.length" class="text-gray-400" />
+                                <span v-text="$page.props.movie.runtime" class="text-gray-400" />
                             </dd>
                             <dt class="sr-only">Genre</dt>
                             <dd class="mt-3 flex items-center text-sm text-gray-500 font-medium sm:mr-6 sm:mt-0 capitalize">
@@ -44,88 +44,7 @@
 
         <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
             <h2 class="text-white font-bold text-4xl mb-12">Showings</h2>
-            <h3 class="text-white font-bold text-2xl mb-4">Sunday, February 28</h3>
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-                <div class="relative bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-teal-500">
-                    <div class="flex-1 min-w-0 text-center">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-xl font-bold text-white">
-                                1:15pm
-                            </p>
-                            <p class="text-md text-gray-500 truncate">
-                                20 tickets available
-                            </p>
-                            <p class="text-md text-gray-100 truncate inline-flex">
-                                Purchase
-                                <svg class="w-4 h-4 ml-2 mt-1 text-teal-500 font-bold rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="relative bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-teal-500">
-                    <div class="flex-1 min-w-0 text-center">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-xl font-bold text-white">
-                                1:15pm
-                            </p>
-                            <p class="text-md text-gray-500 truncate">
-                                20 tickets available
-                            </p>
-                            <p class="text-md text-gray-100 truncate inline-flex">
-                                Purchase
-                                <svg class="w-4 h-4 ml-2 mt-1 text-teal-500 font-bold rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="relative bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-teal-500">
-                    <div class="flex-1 min-w-0 text-center">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-xl font-bold text-white">
-                                1:15pm
-                            </p>
-                            <p class="text-md text-gray-500 truncate">
-                                20 tickets available
-                            </p>
-                            <p class="text-md text-gray-100 truncate inline-flex">
-                                Purchase
-                                <svg class="w-4 h-4 ml-2 mt-1 text-teal-500 font-bold rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="relative bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-teal-500">
-                    <div class="flex-1 min-w-0 text-center">
-                        <a href="#" class="focus:outline-none">
-                            <span class="absolute inset-0" aria-hidden="true"></span>
-                            <p class="text-xl font-bold text-white">
-                                1:15pm
-                            </p>
-                            <p class="text-md text-gray-500 truncate">
-                                20 tickets available
-                            </p>
-                            <p class="text-md text-gray-100 truncate inline-flex">
-                                Purchase
-                                <svg class="w-4 h-4 ml-2 mt-1 text-teal-500 font-bold rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <MovieShowings v-for="(times, date) in showings" :key="times.id" :date="date" :times="times" />
         </div>
     </app-layout>
 </template>
@@ -134,6 +53,7 @@
 import AppLayout from '@/Layouts/App'
 import MovieHero from '@/Components/MovieHero'
 import Review from '@/Components/Review'
+import MovieShowings from '@/Components/MovieShowings'
 export default {
     name: 'Movie',
 
@@ -141,6 +61,13 @@ export default {
         AppLayout,
         MovieHero,
         Review,
+        MovieShowings,
+    },
+
+    computed: {
+      showings () {
+        return this.$page.props.showings
+      }
     }
 }
 </script>

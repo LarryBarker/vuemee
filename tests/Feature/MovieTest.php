@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\Movie;
+use App\Models\Showing;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -30,5 +31,14 @@ class MovieTest extends TestCase
         $response = $this->get(route('movies', 'foo-bar-biz-bang'));
 
         $response->assertStatus(404);
+    }
+
+    public function test_a_movie_has_at_least_one_showing()
+    {
+        Movie::factory()
+            ->has(Showing::factory()->count(1))
+            ->create();
+
+        $this->assertDatabaseCount('showings', 1);
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Movie;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use Inertia\Inertia;
+use App\Models\Movie;
+use App\Models\Showing;
+use Illuminate\Http\Request;
 
 class MovieController extends Controller
 {
@@ -17,7 +19,8 @@ class MovieController extends Controller
     public function show(Movie $movie)
     {
         return Inertia::render('Movie', [
-            'movie' => $movie
+            'movie' => $movie,
+            'showings' => $movie->byDay()
         ]);
     }
 }
