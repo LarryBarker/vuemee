@@ -11,6 +11,8 @@ class Gift extends Model
 
     protected $casts = ['given_on' => 'timestamp'];
 
+    protected $fillable = ['ticket_id', 'given_by', 'given_to'];
+
     public function ticket()
     {
         return $this->belongsTo(Ticket::class);

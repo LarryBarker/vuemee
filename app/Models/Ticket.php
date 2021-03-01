@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Showing;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -35,5 +36,12 @@ class Ticket extends Model
     public function isGift()
     {
         return $this->has('gift');
+    }
+
+    public function hasBeenSent()
+    {
+        return $this->whereHas('gift', function ($q) {
+            $q->where('given_by', Auth::user()->id)->where('ticket_id', $this->id);
+        })->count();
     }
 }

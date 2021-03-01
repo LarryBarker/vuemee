@@ -51,6 +51,16 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
 
+    public function gifts()
+    {
+        return $this->hasMany(Gift::class, 'given_by', 'id');
+    }
+
+    public function donations()
+    {
+        return $this->hasMany(Gift::class, 'given_to', 'id');
+    }
+
     public function hasPurchasedTicket($showingId)
     {
         return $this->tickets()->where('showing_id', $showingId)->exists();

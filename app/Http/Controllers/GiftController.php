@@ -3,28 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gift;
+use App\Models\User;
+use Inertia\Inertia;
+use App\Models\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class GiftController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data = $request->validate([
+            'ticket_id' => 'required|exists:tickets,id'
+        ]);
+
+        $ticket = Ticket::findOrFail($data['ticket_id']);
+
+        if (Auth::user()->id !== $ticket->user_id) {
+            abort(403);
+        }
+
+        if ($ticket->hasBeenSent()) {
+            return Redirect::route('dashboard')->with('error', 'You have already sent this ticket as a gift.');
+        }
+
+        return Inertia::render('Gift');
     }
 
     /**
@@ -35,51 +44,22 @@ class GiftController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required',
+            'ticket_id' => 'required|exists:tickets,id'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Gift  $gift
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Gift $gift)
-    {
-        //
-    }
+        $sendTo = User::firstOrCreate([
+            'email' => $data['email'],
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Gift  $gift
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Gift $gift)
-    {
-        //
-    }
+        $gift = $sendTo->gifts()->create([
+            'given_by' => Auth::user()->id,
+            'ticket_id' => $data['ticket_id'],
+            'given_on' => now()
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Gift  $gift
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Gift $gift)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Gift  $gift
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Gift $gift)
-    {
-        //
+        return Redirect::route('dashboard')->with('success', 'Successfully sent gift.');
     }
 }
