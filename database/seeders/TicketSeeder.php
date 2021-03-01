@@ -16,11 +16,8 @@ class TicketSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 25; $i++) {
-            Ticket::factory()
-                ->for(User::all()->random())
-                ->for(Showing::all()->random())
-                ->create();
-        }
+        Ticket::factory()
+            ->count(100)
+            ->create();
     }
 }

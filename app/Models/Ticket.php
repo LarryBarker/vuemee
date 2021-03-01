@@ -20,8 +20,18 @@ class Ticket extends Model
         return $this->belongsTo(Showing::class);
     }
 
+    public function gift()
+    {
+        return $this->hasOne(Gift::class);
+    }
+
     public function scopeUnused($query)
     {
         $query->whereNull('used_on');
+    }
+
+    public function isGift()
+    {
+        return $this->has('gift');
     }
 }

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             MovieSeeder::class,
             ReviewSeeder::class,
             TicketSeeder::class,
+            GiftSeeder::class,
         ]);
     }
 }
