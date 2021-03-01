@@ -2,7 +2,7 @@
     <div class="overflow-hidden">
         <ul class="divide-y divide-gray-200 space-y-4">
             <li v-for="review in reviews" :key="review.id" class="bg-gray-800 shadow">
-                <a href="#" class="block hover:bg-gray-700">
+                <div class="block hover:bg-gray-700">
                     <div class="flex items-center px-4 py-4 sm:px-6">
                         <div class="min-w-0 flex-1 flex items-center">
                             <div class="flex-shrink-0">
@@ -11,7 +11,7 @@
                             <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                                 <div>
                                     <p class="text-xl font-bold text-white truncate">{{ review.movie.title }}</p>
-                                    <Review :score="3" />
+                                    <Review :score="review.score" :movieId="review.movie.id" />
                                     <p class="text-md font-medium text-gray-300 truncate">{{ review.movie.description }}</p>
                                     <p class="mt-2 flex items-center text-sm text-gray-500">
                                         <MovieMetaData :movie="review.movie" />
@@ -26,7 +26,7 @@
                             </svg>
                         </div>
                     </div>
-                </a>
+                </div>
             </li>
 
         </ul>

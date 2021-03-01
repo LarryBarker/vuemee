@@ -10,7 +10,7 @@
                     <div class="sm:ml-5 sm:mt-1">
                         <h1 v-text="$page.props.movie.title" class="text-4xl mt-4 sm:text-6xl text-white font-black"></h1>
 
-                        <Review :score="$page.props.movie.score" class="h-12 w-12" />
+                        <Review :score="$page.props.movie.score" :movieId="$page.props.movie.id" class="h-12 w-12" />
 
                         <p class="text-gray-300 text-lg font-medium" v-text="$page.props.movie.description" />
 

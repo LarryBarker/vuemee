@@ -35,7 +35,6 @@ export default {
     },
     methods: {
         store() {
-            console.log(this.showing.id)
             this.form.post(this.route('tickets.store'))
         },
     },

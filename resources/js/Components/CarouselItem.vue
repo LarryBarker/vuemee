@@ -14,7 +14,7 @@
             <p class="text-gray-300 text-sm font-medium">
                 {{ movie.next_showing.show_date }} {{ movie.next_showing.show_time }}
             </p>
-            <Review :score="movie.score" />
+            <Review :score="movie.score" :movieId="movie.id" />
         </div>
     </div>
 </template>
