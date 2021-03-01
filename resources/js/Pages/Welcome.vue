@@ -7,14 +7,14 @@
 
         <Hero />
 
-        <Carousel>
+        <Carousel :movies="$page.props.popular_movies">
             <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16">
                 <h1 class="h2 text-7xl font-black text-white mb-4">Popular Movies</h1>
                 <p class="text-xl text-gray-600">Browse our most popular movies rated by viewers just like you!</p>
             </div>
         </Carousel>
 
-        <Carousel>
+        <Carousel :movies="$page.props.now_showing">
             <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16">
                 <h1 class="h2 text-7xl font-black text-white mb-4">Now Showing</h1>
                 <p class="text-xl text-gray-600">Find a showtime for movies not yet rated.</p>

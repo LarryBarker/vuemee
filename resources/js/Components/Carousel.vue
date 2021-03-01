@@ -13,13 +13,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
           <div class="relative w-100 flex flex-wrap items-start content-start">
             <div class="pb-8 flex justify-start items-start content-start overflow-x-scroll overflow-y-hidden space-x-4 whitespace-nowrap">
-                <CarouselItem />
-                <CarouselItem />
-                <CarouselItem />
-                <CarouselItem />
-                <CarouselItem />
-                <CarouselItem />
-                <CarouselItem />
+                <CarouselItem v-for="movie in movies" :key="movie.id" :movie="movie" />
             </div>
         </div>
       </div>
@@ -37,6 +31,8 @@ export default {
   components: {
       CarouselItem,
   },
+
+  props: ['movies'],
 
   mounted() {
 
