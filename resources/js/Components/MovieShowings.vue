@@ -3,18 +3,26 @@
 
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 mb-8">
 
-        <Showtime v-for="time in times" :key="time.id" :time="time.show_time" :tickets="time.remaining_tickets" />
+        <Showtime
+            v-for="time in times"
+            :key="time.id"
+            :showing="time"
+            :time="time.show_time"
+            :tickets="time.remaining_tickets"
+        />
 
     </div>
+
 </template>
 
 <script>
 import Showtime from '@/Components/Showtime'
+
 export default {
     name: 'MovieShowings',
 
     components: {
-        Showtime
+        Showtime,
     },
 
     props: ['date', 'times'],

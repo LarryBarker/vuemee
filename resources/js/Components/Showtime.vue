@@ -1,7 +1,7 @@
 <template>
     <div class="relative bg-gray-800 px-6 py-5 shadow-sm flex items-center space-x-3 hover:border-gray-400 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-teal-500">
         <div class="flex-1 min-w-0 text-center">
-            <a href="#" class="focus:outline-none">
+            <a @click="store" class="focus:outline-none">
                 <span class="absolute inset-0" aria-hidden="true"></span>
                 <p class="text-xl font-bold text-white">
                     {{ time }}
@@ -24,10 +24,20 @@
 export default {
     name: 'Showtime',
 
-    props: ['time', 'tickets'],
+    props: ['time', 'tickets', 'showing'],
 
-    mounted () {
-        console.log(this.time)
-    }
+    data() {
+        return {
+            form: this.$inertia.form({
+                showing_id: this.showing.id,
+            }),
+        }
+    },
+    methods: {
+        store() {
+            console.log(this.showing.id)
+            this.form.post(this.route('tickets.store'))
+        },
+    },
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
     <header class="absolute w-full z-30">
+        <FlashMessage />
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
             <div class="flex items-center justify-between h-20">
 
@@ -85,12 +86,14 @@
     import BreezeApplicationLogo from '@/Components/ApplicationLogo'
     import BreezeNavLink from '@/Components/NavLink'
     import BreezeResponsiveNavLink from '@/Components/ResponsiveNavLink'
+    import FlashMessage from '@/Components/FlashMessage'
 
     export default {
         components: {
             BreezeApplicationLogo,
             BreezeNavLink,
             BreezeResponsiveNavLink,
+            FlashMessage,
         },
 
         data() {

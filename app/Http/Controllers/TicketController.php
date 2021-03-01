@@ -3,83 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class TicketController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
-    }
+        // Users must be signed in to purchase tickets
+        if (!Auth::user()) {
+            return Redirect::route('login');
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Ticket $ticket)
-    {
-        //
-    }
+        $data = Request::validate(['showing_id' => ['required', 'exists:showings,id']]);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Ticket $ticket)
-    {
-        //
-    }
+        // Only allow the user to purchase a ticket once
+        if (Auth::user()->hasPurchasedTicket($data['showing_id'])) {
+            return Redirect::back()->with('error', 'You have already purchased a ticket for this showing.');
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Ticket $ticket)
-    {
-        //
-    }
+        Auth::user()->tickets()->create($data);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Ticket  $ticket
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Ticket $ticket)
-    {
-        //
+        return Redirect::route('dashboard')->with('success', 'Successfully purchased ticket');
     }
 }

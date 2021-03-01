@@ -7,6 +7,7 @@
 
             <!-- Page Content -->
             <main class="flex-grow">
+
                 <slot />
             </main>
 
@@ -18,11 +19,13 @@
 <script>
     import Header from '@/Components/Header'
     import HeroIllustration from '@/Components/HeroIllustration'
+    import FlashMessage from '@/Components/FlashMessage'
 
     export default {
         components: {
             Header,
             HeroIllustration,
+            FlashMessage,
         },
     }
 </script>

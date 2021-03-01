@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+
+    public function hasPurchasedTicket($showingId)
+    {
+        return $this->tickets()->where('showing_id', $showingId)->exists();
+    }
 }
