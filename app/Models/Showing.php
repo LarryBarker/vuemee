@@ -15,6 +15,11 @@ class Showing extends Model
     /** @var array */
     protected $appends = ['show_date', 'show_time', 'remaining_tickets'];
 
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
     public function getShowDateAttribute()
     {
         return $this->showing_at->format('l, F d, Y');
@@ -27,6 +32,6 @@ class Showing extends Model
 
     public function getRemainingTicketsAttribute()
     {
-        return $this->max_tickets - 5;
+        return $this->max_tickets - $this->tickets()->unused()->count();
     }
 }
