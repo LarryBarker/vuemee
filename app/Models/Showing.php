@@ -15,6 +15,11 @@ class Showing extends Model
     /** @var array */
     protected $appends = ['show_date', 'show_time', 'remaining_tickets'];
 
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
+    }
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class);

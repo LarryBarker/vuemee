@@ -1,17 +1,15 @@
 <template>
     <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
         <div class="py-12">
-            <div class="">
-                <div class="mt-20 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200">
-                        You're logged in!
-                    </div>
+            <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="mt-20">
+                    <h1 class="text-white text-5xl font-black mb-8">My Tickets</h1>
+                    <UserTickets :tickets="$page.props.tickets" />
+                </div>
+
+                <div class="mt-20">
+                    <h1 class="text-white text-5xl font-black mb-8">My Reviews</h1>
+                    <UserReviews :reviews="$page.props.reviews" />
                 </div>
             </div>
         </div>
@@ -20,10 +18,14 @@
 
 <script>
     import AppLayout from '@/Layouts/App'
+    import UserTickets from '@/Components/UserTickets'
+    import UserReviews from '@/Components/UserReviews'
 
     export default {
         components: {
             AppLayout,
+            UserTickets,
+            UserReviews,
         },
     }
 </script>
